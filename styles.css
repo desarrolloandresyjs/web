@@ -248,11 +248,41 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    transform: rotateY(180deg);
 }
 
 .service-icon i {
     font-size: 2rem;
     color: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card:hover .service-icon {
+    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+.service-card:hover .service-icon::before {
+    opacity: 1;
 }
 
 .service-card h3 {
